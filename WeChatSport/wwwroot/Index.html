@@ -20,6 +20,15 @@
     <link href="css/material-design-iconic-font.min.css" rel="stylesheet" />
     <link href="css/util.css" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?7b2501231e8c38622e92d7527c479ba2";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 
 <body>
@@ -73,7 +82,7 @@
                         <br />
                     </div>
                     <div class="flex-c-m">
-                        
+
                     </div>
                 </form>
             </div>
@@ -87,13 +96,14 @@
 <script type="text/javascript">
     $(function () {
         $('#submit').on('click',
-            function() {
+            function () {
                 var accountId = $("#accountId").val();
-                if (accountId.length < 1) {
+                var jibuNuber = $("#jibuNuber").val();
+                if (accountId.length < 1 && jibuNuber.length < 1) {
                     alert("卓易账号是一定要填写的哦");
                 }
 
-                var jibuNuber = $("#jibuNuber").val();
+
                 for (var i = 0; i < jibuNuber.length; i++) {
                     var code = jibuNuber.charAt(i).charCodeAt(0);
                     if (code < 48 || code > 57) {
@@ -107,7 +117,7 @@
                 }
                 $.ajax({
                     type: "GET"
-                    ,url: "/api/DroiApi/" + accountId + "/" + jibuNuber
+                    , url: "/api/DroiApi/" + accountId + "/" + jibuNuber
                     , dataType: 'json'
                     , contentType: 'application/json'
                     , success: function (data) {
