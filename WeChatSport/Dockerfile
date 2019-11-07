@@ -4,10 +4,10 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["WeChatSport/WeChatSport.csproj", "WeChatSport/"]
+COPY ["WeChatSport.csproj", "WeChatSport/"]
 RUN dotnet restore "WeChatSport/WeChatSport.csproj"
 COPY . .
-WORKDIR "/src/WeChatSport"
+WORKDIR "/src"
 RUN dotnet build "WeChatSport.csproj" -c Release -o /app
 
 FROM build AS publish
