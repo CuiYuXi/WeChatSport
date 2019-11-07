@@ -99,7 +99,7 @@
             function () {
                 var accountId = $("#accountId").val();
                 var jibuNuber = $("#jibuNuber").val();
-                if (accountId.length < 1 && jibuNuber.length < 1) {
+                if (accountId.length < 1 || jibuNuber.length < 1) {
                     alert("卓易账号是一定要填写的哦");
                 }
 
