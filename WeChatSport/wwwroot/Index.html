@@ -1,0 +1,119 @@
+﻿
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>微信刷步</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/material-design-iconic-font.min.css" rel="stylesheet" />
+    <link href="~/Content/css/util.css" rel="stylesheet" />
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/material-design-iconic-font.min.css" rel="stylesheet" />
+    <link href="css/util.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/img/bg-01.jpg');">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <form class="login100-form validate-form" id='setWalk'>
+                    <span class="login100-form-title p-b-49" style="color:#006935;">卓易健康刷步</span>
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="请输入已绑定微信的卓易账号">
+                        <span class="label-input100">卓易账号:</span>
+                        <input class="input100" type="text" id="accountId" name="accountId" placeholder="请输入已绑定微信的卓易账号" autocomplete="off">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="请输入要修改的步数(1~98800)">
+                        <span class="label-input100">输入步数:</span>
+                        <input class="input100" type="text" id="jibuNuber" name="jibuNuber" placeholder="请输入要修改的步数(1~98800)">
+                        <span class="focus-input100" data-symbol="&#xf2e1;"></span>
+                    </div>
+                    <div class="text-right p-t-8 p-b-31">
+                        <a href="javascript:">
+                            <!-- 忘记密码？ -->
+                        </a>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button class="login100-form-btn" id='submit' type="button">提交修改</button>
+                        </div>
+                    </div>
+                    <div class="txt1 text-left p-t-54 p-b-20">
+                        <span>使用帮助：</span><br />
+                        <span>
+                            1、安装下载【卓易健康】APP,可在各大应用市场下载
+                        </span>
+                        <br />
+                        <span>
+                            2、苹果可在App Store或其他平台下载。安卓下载卓易健康app
+                        </span>
+                        <br />
+                        <span>
+                            3、安装APP并注册账号后点击-我-微信运动-绑定至相关微信设备即可
+                        </span>
+                        <br />
+                        <span>
+                            4、绑定微信后，在本页面输入刚刚注册的账号及要修改的步数点击提交修改
+                        </span>
+                        <br />
+                        <span>
+                            5、建议每次递交步数间隔不得超过9000,如第一次8999,第二次17998以此类推。微信上限98800
+                        </span>
+                        <br />
+                    </div>
+                    <div class="flex-c-m">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+<script type="text/javascript">
+    $(function () {
+        $('#submit').on('click',
+            function() {
+                var accountId = $("#accountId").val();
+                if (accountId.length < 1) {
+                    alert("卓易账号是一定要填写的哦");
+                }
+
+                var jibuNuber = $("#jibuNuber").val();
+                for (var i = 0; i < jibuNuber.length; i++) {
+                    var code = jibuNuber.charAt(i).charCodeAt(0);
+                    if (code < 48 || code > 57) {
+                        $("#jibuNuber").focus();
+                        $("#jibuNuber").val("");
+                        alert("步数小于98800，并且都要是数字");
+                        return false;
+                        break;
+
+                    }
+                }
+                $.ajax({
+                    type: "GET"
+                    ,url: "/api/DroiApi/" + accountId + "/" + jibuNuber
+                    , dataType: 'json'
+                    , contentType: 'application/json'
+                    , success: function (data) {
+                        alert(data.messsage);
+                    }
+                });
+            });
+    })
+</script>
