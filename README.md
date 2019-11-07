@@ -1,7 +1,7 @@
 # 微信运动刷步 [卓易健康]
 
 * 原理：利用卓易健康官方API同步微信步数
-* 演示地址：http://wechatsport.studenty.cn/Index.html
+* 演示地址：<http://wechatsport.studenty.cn/Index.html>
 
 ## 使用帮助
 
