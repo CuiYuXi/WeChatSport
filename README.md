@@ -1,6 +1,6 @@
 # 微信运动刷步 [卓易健康]
 
-** 原理：利用卓易健康官方API同步微信步数 **
+* 原理：利用卓易健康官方API同步微信步数 *
 
 ## 使用帮助
 
@@ -26,4 +26,8 @@
 
 ### Docker部署
 
-> Markdown增强版中比较有名的有Markdown Extra、MultiMarkdown、 Maruku等。这些衍生版本要么基于工具，如~~Pandoc~~，Pandao；要么基于网站，如GitHub和Wikipedia，在语法上基本兼容，但在一些语法和渲染效果上有改动。
+    按顺序执行下面命令
+    docker pull cuiyuxi/wechat_sport:latest
+    docker run -d -p 8001:80 --name=wechat_sport cuiyuxi/wechat_sport
+
+>访问 <http://服务器ip:8001/Index.html> 即可看到应用程序界面
