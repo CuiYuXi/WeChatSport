@@ -15,7 +15,7 @@
 
 ### IIS部署
 1. 下载dotNet Core 2.1运行时 <https://dotnet.microsoft.com/download/dotnet-core>
-2. 下载编译好的文件 <https://github.com/CuiYuXi/WeChatSport/tree/master/publish/v1.0.0>
+2. 下载编译好的文件 <https://github.com/CuiYuXi/WeChatSport/tree/master/publish/v1.0.2>
 > https://github.com/CuiYuXi/WeChatSport/tree/master/publish/v1.0.0 (v1.0.0 是版本号 要想使用其他版本可以自行修改)
 
 3. 打开IIS→网站→添加网站→确定
